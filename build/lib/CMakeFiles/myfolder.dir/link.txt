@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmyfolder.a CMakeFiles/myfolder.dir/myfolder/myfolderfile.cpp.o
+/usr/bin/ranlib libmyfolder.a
