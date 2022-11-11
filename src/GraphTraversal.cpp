@@ -17,19 +17,25 @@ GraphTraversal::Iterator::Iterator(GraphTraversal * g) {}
  *
  * Advances the traversal of the image.
  */
-GraphTraversal::Iterator & GraphTraversal::Iterator::operator++() {}
+GraphTraversal::Iterator & GraphTraversal::Iterator::operator++() {
+    return *this;
+}
 
 /**
  * Iterator accessor opreator.
  *
  * Accesses the current Point in the GraphTraversal.
  */
-Point GraphTraversal::Iterator::operator*() {}
+std::string GraphTraversal::Iterator::operator*() {
+    return "";
+}
 
 /**
  * Iterator inequality operator.
  *
  * Determines if two iterators are not equal.
  */
-bool GraphTraversal::Iterator::operator!=(const GraphTraversal::Iterator &other) {}
+bool GraphTraversal::Iterator::operator!=(const GraphTraversal::Iterator &other) {
+    return true;
+}
 
