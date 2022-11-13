@@ -4,7 +4,11 @@
 #include <cmath>
 #include <list>
 #include <queue>
+#include <vector>
+#include <iostream>
+#include <map>
 
+#include "GraphTraversal.h"
 
 /**
  * A breadth-first GraphTraversal.
@@ -12,16 +16,22 @@
  */
 class BFS : public GraphTraversal {
 public:
-  BFS(const PNG & png, const Point & start, double tolerance);
+  BFS(const std::map<std::string, std::vector<std::string>> & graph_map, const std::string & start_point, size_t node_count);
 
-  ImageTraversal::Iterator begin();
-  ImageTraversal::Iterator end();
+  GraphTraversal::Iterator begin();
+  GraphTraversal::Iterator end();
 
-  void add(const Point & point);
-  Point pop();
-  Point peek() const;
+  void add(const std::string & point);
+  std::string pop();
+  std::string peek() const;
   bool empty() const;
 
 private:
+  size_t size;
+  std::queue<std::string> queue;
+  std::vector<std::string> visited_vect;
+  std::string start; //where we start the traversal
+  
+  std::map<std::string, std::vector<std::string>> graph;
   
 };
