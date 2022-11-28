@@ -5,6 +5,7 @@
 
 #include <iterator>
 #include <vector>
+#include <string>
 
 /**
  * A base class for traversal algorithms on images.
@@ -22,12 +23,13 @@ public:
   /**
    * A forward iterator through an GraphTraversal.
    */
-  class Iterator : std::iterator<std::forward_iterator_tag, Point> {
+  class Iterator : std::iterator<std::forward_iterator_tag, std::string> {
   public:
     Iterator();
+    Iterator(GraphTraversal* g);
 
     Iterator & operator++();
-    Point operator*();
+    std::string operator*();
     bool operator!=(const Iterator &other);
 
   private:
@@ -49,17 +51,17 @@ public:
    * Add new point to the traversal
    * Virtual function. Derived class need to implement this
    */
-  virtual void add(const Point & t) = 0;
+  virtual void add(const std::string & t) = 0;
   /**
    * Remove and return the next point of the traversal
    * Virtual function. Derived class need to implement this
    */
-  virtual Point pop() = 0;
+  virtual std::string pop() = 0;
   /**
    * Return but not remove the next point of the traversal
    * Virtual function. Derived class need to implement this
    */
-  virtual Point peek() const = 0;
+  virtual std::string peek() const = 0;
   /**
    * To see if the traversal has no points left
    * Virtual function. Derived class need to implement this
