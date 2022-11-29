@@ -3,40 +3,45 @@
 cmake_policy(SET CMP0009 NEW)
 
 # myfolder_sources at lib/CMakeLists.txt:5 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/workspaces/CS225/cs225_project/lib/myfolder/*.cpp")
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/workspaces/CS225/Social-Media-Group-Visualizer/lib/myfolder/*.cpp")
 set(OLD_GLOB
-  "/workspaces/CS225/cs225_project/lib/myfolder/myfolderfile.cpp"
+  "/workspaces/CS225/Social-Media-Group-Visualizer/lib/myfolder/myfolderfile.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/workspaces/CS225/cs225_project/build/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/workspaces/CS225/Social-Media-Group-Visualizer/build/CMakeFiles/cmake.verify_globs")
 endif()
 
 # src_sources at src/CMakeLists.txt:5 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/workspaces/CS225/cs225_project/src/*.cpp")
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/workspaces/CS225/Social-Media-Group-Visualizer/src/*.cpp")
 set(OLD_GLOB
-  "/workspaces/CS225/cs225_project/src/ourcode.cpp"
+  "/workspaces/CS225/Social-Media-Group-Visualizer/src/BFS.cpp"
+  "/workspaces/CS225/Social-Media-Group-Visualizer/src/Between.cpp"
+  "/workspaces/CS225/Social-Media-Group-Visualizer/src/DFS.cpp"
+  "/workspaces/CS225/Social-Media-Group-Visualizer/src/Dijkstra.cpp"
+  "/workspaces/CS225/Social-Media-Group-Visualizer/src/GraphTraversal.cpp"
+  "/workspaces/CS225/Social-Media-Group-Visualizer/src/ourcode.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/workspaces/CS225/cs225_project/build/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/workspaces/CS225/Social-Media-Group-Visualizer/build/CMakeFiles/cmake.verify_globs")
 endif()
 
 # src_sources at src/CMakeLists.txt:5 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/workspaces/CS225/cs225_project/src/*.hpp")
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/workspaces/CS225/Social-Media-Group-Visualizer/src/*.hpp")
 set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/workspaces/CS225/cs225_project/build/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/workspaces/CS225/Social-Media-Group-Visualizer/build/CMakeFiles/cmake.verify_globs")
 endif()
 
 # tests_src at CMakeLists.txt:131 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/workspaces/CS225/cs225_project/tests/*.cpp")
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/workspaces/CS225/Social-Media-Group-Visualizer/tests/*.cpp")
 set(OLD_GLOB
-  "/workspaces/CS225/cs225_project/tests/tests.cpp"
+  "/workspaces/CS225/Social-Media-Group-Visualizer/tests/tests.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/workspaces/CS225/cs225_project/build/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/workspaces/CS225/Social-Media-Group-Visualizer/build/CMakeFiles/cmake.verify_globs")
 endif()
