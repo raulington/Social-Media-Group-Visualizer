@@ -1,19 +1,19 @@
 #include "Dijkstra.h"
 
-std::vector<std::vector<std::string>> Dijkstra::algorithm(std::string vertex1, std::string::string vertex2) {
-    std::map<std::string, std::string> tmp;
+std::vector<std::vector<std::string>> Dijkstra::algorithm(std::string vertex1, std::string vertex2) {
+    std::unordered_map<std::string, std::string> tmp;
     std::queue<std::string> queue;
-    for (auto i : map[vertex1]) {
+    for (auto i : map_[vertex1]) {
         queue.push(i);
     }
     std::vector<std::string> tmp2;
     std::string tmp3;
 
     while(queue.empty() == false) {
-        tmp3 = queue.front;
+        tmp3 = queue.front();
         queue.pop();
-        for (auto i : map_(tmp3)) {
-            flag = true;
+        for (auto i : map_.at(tmp3)) {
+            bool flag = true;
             for (auto j : tmp2) {
                 if (i == j) {
                     flag = false;
@@ -22,7 +22,7 @@ std::vector<std::vector<std::string>> Dijkstra::algorithm(std::string vertex1, s
             }
             if (flag == true) {
                 tmp[i] = tmp3;
-                queue.push(i)
+                queue.push(i);
             }
         }
         tmp2.push_back(tmp3);
