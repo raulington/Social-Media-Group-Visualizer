@@ -1,5 +1,40 @@
 #include <catch2/catch_test_macros.hpp>
 #include "./Between.h"
+#include "./BFS.h"
+
+
+// Cases for BFS
+TEST_CASE("BFS maintains the correct point on top", "[weight=0][part=1][part=1a][valgrind]") {
+
+  std::unordered_map<std::string, std::vector<std::string>> graph;
+  std::string startPoint("start");
+
+  BFS bfs(graph, startPoint, 5);
+  bfs.add("one");
+  bfs.add("two");
+  bfs.add("three");
+  bfs.add("four");
+
+  REQUIRE( bfs.peek() == "start" );
+}
+
+TEST_CASE("BFS maintains the BFS ordering", "[weight=0][part=1][part=1b][valgrind]") {
+
+  std::unordered_map<std::string, std::vector<std::string>> graph;
+  std::string startPoint("start");
+
+  BFS bfs(graph, startPoint, 5);
+  bfs.add("one");
+  bfs.add("two");
+  bfs.add("three");
+  bfs.add("four");
+
+  REQUIRE( bfs.peek() == "start" );
+  REQUIRE( bfs.peek() == "one" );
+  REQUIRE( bfs.peek() == "two" );
+  REQUIRE( bfs.peek() == "three" );
+  REQUIRE( bfs.peek() == "four" );
+}
 
 // Cases for betweenness based on the following youtube video: https://www.youtube.com/watch?v=ptqt2zr9ZRE
 TEST_CASE("Betweeness case 1", "[weight=1][part=1][valgrind]") {

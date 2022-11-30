@@ -7,6 +7,7 @@
 #include <vector>
 #include <iostream>
 #include <map>
+#include <unordered_map>
 
 #include "GraphTraversal.h"
 
@@ -16,7 +17,7 @@
  */
 class BFS : public GraphTraversal {
 public:
-  BFS(const std::map<std::string, std::vector<std::string>> & graph_map, const std::string & start_point, size_t node_count);
+  BFS(const std::unordered_map<std::string, std::vector<std::string>> & graph_map, const std::string & start_point, size_t node_count);
 
   GraphTraversal::Iterator begin();
   GraphTraversal::Iterator end();
@@ -32,6 +33,6 @@ private:
   std::vector<std::string> visited_vect;
   std::string start; //where we start the traversal
   
-  std::map<std::string, std::vector<std::string>> graph;
+  std::unordered_map<std::string, std::vector<std::string>> graph;
   
 };
