@@ -1,5 +1,5 @@
 src/CMakeFiles/src.dir/BFS.cpp.o: \
-  /workspaces/CS225/Social-Media-Group-Visualizer/src/BFS.cpp \
+  /workspaces/cs225/Social-Media-Group-Visualizer/src/BFS.cpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iterator \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -215,7 +215,7 @@ src/CMakeFiles/src.dir/BFS.cpp.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/uses_allocator.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/stack \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_stack.h \
-  /workspaces/CS225/Social-Media-Group-Visualizer/src/BFS.h \
+  /workspaces/cs225/Social-Media-Group-Visualizer/src/BFS.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ios \
@@ -243,4 +243,4 @@ src/CMakeFiles/src.dir/BFS.cpp.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/debug/map \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/debug/map.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/debug/multimap.h \
-  /workspaces/CS225/Social-Media-Group-Visualizer/src/GraphTraversal.h
+  /workspaces/cs225/Social-Media-Group-Visualizer/src/GraphTraversal.h
