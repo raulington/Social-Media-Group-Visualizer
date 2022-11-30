@@ -1,7 +1,14 @@
 #pragma once
+#include <string>
+#include <vector>
+#include <queue>
+#include <unordered_map>
+
 class Dijkstra {
     public:
-    Dijkstra();
+    Dijkstra(std::unordered_map<std::string, std::vector<std::string>> map): map_(map) {};
+    std::vector<std::vector<std::string>> algorithm(std::string vertex1, std::string vertex2);
 
     private:
+    std::unordered_map<std::string, std::vector<std::string>> map_;
 };
