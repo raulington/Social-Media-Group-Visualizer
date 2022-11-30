@@ -1,5 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 #include "./Between.h"
+#include <iostream>
 
 // Cases for betweenness based on the following youtube video: https://www.youtube.com/watch?v=ptqt2zr9ZRE
 TEST_CASE("Betweeness case 1", "[weight=1][part=1][valgrind]") {
@@ -35,9 +36,25 @@ TEST_CASE("Betweeness case 1", "[weight=1][part=1][valgrind]") {
     Dneighbors.insert(Dneighbors.end(), { C, E, F });
     map.insert(std::make_pair(D, Dneighbors));
 
-    Between b(map);
 
+    Between b(map);
     std::unordered_map<std::string, double> cmap = b.centralities();
+    for (const auto& keypair : cmap) {
+        std::cout << "string: " << keypair.first;
+        std::cout << " centrality: " << keypair.second << std::endl;
+    }
+
+    for (const auto& path : b.vertex_paths_) {
+        std::cout << "Pair: " << path.first.first << " " << path.first.second << std::endl;
+        int count = 0;
+        for (std::vector<std::string> walk : path.second) {
+            std::cout << "Path " << count << ":" << std::endl;
+            for (std::string step : walk) std::cout << step << " ";
+            std::cout << std::endl;
+            count += 1;
+        }
+    }
+
     REQUIRE(cmap.at(A) == 0);
     REQUIRE(cmap.at(B) == 0);
     REQUIRE(cmap.at(C) == 6);
