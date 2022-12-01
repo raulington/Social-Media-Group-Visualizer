@@ -7,6 +7,7 @@
 #include <string>
 #include <map>
 #include <algorithm>
+#include <unordered_map>
 
 #include "GraphTraversal.h"
 
@@ -20,7 +21,7 @@
 class DFS : public GraphTraversal {
 public:
   // DFS constructor
-  DFS(const std::map<std::string, std::vector<std::string>>& graph, const std::string& start, int num_nodes);
+  DFS(const std::unordered_map<std::string, std::vector<std::string>>& graph, const std::string& start, int num_nodes);
 
   GraphTraversal::Iterator begin();
   GraphTraversal::Iterator end();
@@ -36,7 +37,7 @@ private:
   std::vector<std::string> nodes_visited_;
 
   // Graph
-  std::map<std::string, std::vector<std::string>> graph_;
+  std::unordered_map<std::string, std::vector<std::string>> graph_;
   std::string start_;
   int num_nodes_;
 

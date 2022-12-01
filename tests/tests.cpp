@@ -1,6 +1,73 @@
 #include <catch2/catch_test_macros.hpp>
 #include "./Between.h"
-#include <iostream>
+#include "./BFS.h"
+#include "./DFS.h"
+
+// Cases for DFS
+TEST_CASE("DFS maintains the deepest point on top", "[weight=0][part=1][part=1a][valgrind]") {
+
+  std::unordered_map<std::string, std::vector<std::string>> graph;
+  std::string startPoint("start");
+
+  DFS dfs(graph, startPoint, 5);
+  dfs.add("one");
+  dfs.add("two");
+  dfs.add("three");
+  dfs.add("four");
+
+  REQUIRE( dfs.peek() == "four" );
+}
+
+TEST_CASE("DFS maintains a depth-first ordering", "[weight=0][part=1][part=1b][valgrind]") {
+
+  std::unordered_map<std::string, std::vector<std::string>> graph;
+  std::string startPoint("start");
+
+  DFS dfs(graph, startPoint, 5);
+  dfs.add("one");
+  dfs.add("two");
+  dfs.add("three");
+  dfs.add("four");
+
+  REQUIRE( dfs.pop() == "four" );
+  REQUIRE( dfs.pop() == "three" );
+  REQUIRE( dfs.pop() == "two" );
+  REQUIRE( dfs.pop() == "one" );
+  REQUIRE( dfs.pop() == "start" );
+}
+
+// Cases for BFS
+TEST_CASE("BFS maintains the correct point on top", "[weight=0][part=1][part=1a][valgrind]") {
+
+  std::unordered_map<std::string, std::vector<std::string>> graph;
+  std::string startPoint("start");
+
+  BFS bfs(graph, startPoint, 5);
+  bfs.add("one");
+  bfs.add("two");
+  bfs.add("three");
+  bfs.add("four");
+
+  REQUIRE( bfs.peek() == "start" );
+}
+
+TEST_CASE("BFS maintains the BFS ordering", "[weight=0][part=1][part=1b][valgrind]") {
+
+  std::unordered_map<std::string, std::vector<std::string>> graph;
+  std::string startPoint("start");
+
+  BFS bfs(graph, startPoint, 5);
+  bfs.add("one");
+  bfs.add("two");
+  bfs.add("three");
+  bfs.add("four");
+
+  REQUIRE( bfs.pop() == "start" );
+  REQUIRE( bfs.pop() == "one" );
+  REQUIRE( bfs.pop() == "two" );
+  REQUIRE( bfs.pop() == "three" );
+  REQUIRE( bfs.pop() == "four" );
+}
 
 // Cases for betweenness based on the following youtube video: https://www.youtube.com/watch?v=ptqt2zr9ZRE
 TEST_CASE("Betweeness case 1", "[weight=1][part=1][valgrind]") {
