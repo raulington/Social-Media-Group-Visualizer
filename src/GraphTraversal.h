@@ -33,6 +33,9 @@ public:
     bool operator!=(const Iterator &other);
 
   private:
+
+  GraphTraversal* graph_traversal;
+  std::string start;
   };
 
   /**
