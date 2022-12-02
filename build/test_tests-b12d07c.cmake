@@ -1,5 +1,3 @@
-add_test( [==[Betweeness case 1]==] /workspaces/cs225/Social-Media-Group-Visualizer/build/test [==[Betweeness case 1]==]  )
-set_tests_properties( [==[Betweeness case 1]==] PROPERTIES WORKING_DIRECTORY /workspaces/cs225/Social-Media-Group-Visualizer/build)
-add_test( [==[Betweeness case 2]==] /workspaces/cs225/Social-Media-Group-Visualizer/build/test [==[Betweeness case 2]==]  )
-set_tests_properties( [==[Betweeness case 2]==] PROPERTIES WORKING_DIRECTORY /workspaces/cs225/Social-Media-Group-Visualizer/build)
-set( test_TESTS [==[Betweeness case 1]==] [==[Betweeness case 2]==])
+add_test( [==[Betweeness case 1]==] /workspaces/CS225/Social-Media-Group-Visualizer/build/test [==[Betweeness case 1]==]  )
+set_tests_properties( [==[Betweeness case 1]==] PROPERTIES WORKING_DIRECTORY /workspaces/CS225/Social-Media-Group-Visualizer/build)
+set( test_TESTS [==[Betweeness case 1]==])

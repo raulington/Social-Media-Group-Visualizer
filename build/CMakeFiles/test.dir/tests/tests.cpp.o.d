@@ -1,5 +1,5 @@
 CMakeFiles/test.dir/tests/tests.cpp.o: \
-  /workspaces/cs225/Social-Media-Group-Visualizer/tests/tests.cpp \
+  /workspaces/CS225/Social-Media-Group-Visualizer/tests/tests.cpp \
   /usr/include/catch2/catch_test_macros.hpp \
   /usr/include/catch2/internal/catch_test_macro_impl.hpp \
   /usr/include/catch2/catch_user_config.hpp \
@@ -231,7 +231,7 @@ CMakeFiles/test.dir/tests/tests.cpp.o: \
   /usr/include/catch2/internal/catch_test_registry.hpp \
   /usr/include/catch2/interfaces/catch_interfaces_testcase.hpp \
   /usr/include/catch2/internal/catch_preprocessor_remove_parens.hpp \
-  /workspaces/cs225/Social-Media-Group-Visualizer/src/./Between.h \
+  /workspaces/CS225/Social-Media-Group-Visualizer/src/./Between.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/unordered_map \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/aligned_buffer.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/hashtable.h \

@@ -1,4 +1,4 @@
-# Install script for directory: /workspaces/cs225/Social-Media-Group-Visualizer/lib
+# Install script for directory: /workspaces/CS225/Social-Media-Group-Visualizer/lib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

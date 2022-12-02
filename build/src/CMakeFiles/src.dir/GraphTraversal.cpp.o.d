@@ -1,5 +1,5 @@
 src/CMakeFiles/src.dir/GraphTraversal.cpp.o: \
-  /workspaces/cs225/Social-Media-Group-Visualizer/src/GraphTraversal.cpp \
+  /workspaces/CS225/Social-Media-Group-Visualizer/src/GraphTraversal.cpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cmath \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -203,7 +203,7 @@ src/CMakeFiles/src.dir/GraphTraversal.cpp.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ostream.tcc \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/istream \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/istream.tcc \
-  /workspaces/cs225/Social-Media-Group-Visualizer/src/GraphTraversal.h \
+  /workspaces/CS225/Social-Media-Group-Visualizer/src/GraphTraversal.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/vector \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_uninitialized.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h \

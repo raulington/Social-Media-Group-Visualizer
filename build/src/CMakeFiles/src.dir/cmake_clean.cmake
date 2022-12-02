@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/src.dir/Dijkstra.cpp.o.d"
   "CMakeFiles/src.dir/GraphTraversal.cpp.o"
   "CMakeFiles/src.dir/GraphTraversal.cpp.o.d"
+  "CMakeFiles/src.dir/PriorityQueue.cpp.o"
+  "CMakeFiles/src.dir/PriorityQueue.cpp.o.d"
   "CMakeFiles/src.dir/ourcode.cpp.o"
   "CMakeFiles/src.dir/ourcode.cpp.o.d"
   "libsrc.a"

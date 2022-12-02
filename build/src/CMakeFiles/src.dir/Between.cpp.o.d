@@ -1,6 +1,6 @@
 src/CMakeFiles/src.dir/Between.cpp.o: \
-  /workspaces/cs225/Social-Media-Group-Visualizer/src/Between.cpp \
-  /workspaces/cs225/Social-Media-Group-Visualizer/src/Between.h \
+  /workspaces/CS225/Social-Media-Group-Visualizer/src/Between.cpp \
+  /workspaces/CS225/Social-Media-Group-Visualizer/src/Between.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/vector \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_algobase.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -191,7 +191,7 @@ src/CMakeFiles/src.dir/Between.cpp.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/debug/map \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/debug/map.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/debug/multimap.h \
-  /workspaces/cs225/Social-Media-Group-Visualizer/src/Dijkstra.h \
+  /workspaces/CS225/Social-Media-Group-Visualizer/src/Dijkstra.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/queue \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/deque \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_deque.h \

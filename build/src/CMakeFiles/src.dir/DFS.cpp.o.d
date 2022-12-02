@@ -1,5 +1,5 @@
 src/CMakeFiles/src.dir/DFS.cpp.o: \
-  /workspaces/cs225/Social-Media-Group-Visualizer/src/DFS.cpp \
+  /workspaces/CS225/Social-Media-Group-Visualizer/src/DFS.cpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iterator \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -215,7 +215,7 @@ src/CMakeFiles/src.dir/DFS.cpp.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/uses_allocator.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/stack \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_stack.h \
-  /workspaces/cs225/Social-Media-Group-Visualizer/src/DFS.h \
+  /workspaces/CS225/Social-Media-Group-Visualizer/src/DFS.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/map \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_tree.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/node_handle.h \
@@ -249,4 +249,4 @@ src/CMakeFiles/src.dir/DFS.cpp.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/debug/safe_local_iterator.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/debug/safe_local_iterator.tcc \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/pstl/execution_defs.h \
-  /workspaces/cs225/Social-Media-Group-Visualizer/src/GraphTraversal.h
+  /workspaces/CS225/Social-Media-Group-Visualizer/src/GraphTraversal.h
