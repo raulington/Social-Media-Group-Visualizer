@@ -18,7 +18,8 @@ Between::Between(std::unordered_map<std::string, std::vector<std::string>>& grap
     // Getting all possible shortest paths
     Dijkstra d(graph);
     for (const auto& vertex_pair : vertex_pairs_) {
-        std::vector<std::vector<std::string>> paths = d.algorithm(vertex_pair.first, vertex_pair.second);
+        //std::vector<std::vector<std::string>> paths = d.algorithm(vertex_pair.first, vertex_pair.second);
+        std::vector<std::vector<std::string>> paths = d.algorithm2(vertex_pair.first, vertex_pair.second);
         vertex_paths_.insert(std::make_pair(vertex_pair, paths));
     }
 }
