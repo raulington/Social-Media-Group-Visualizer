@@ -34,14 +34,26 @@ int main() {
     std::cout << "Most influential person: " << most_influential << std::endl;
 
     // Grab random person
-    int random_idx = rand() % map.size();
+    int random_idx1 = rand() % map.size();
     int count = 0;
-    std::string random_person;
+    std::string random_person1;
     for (const auto& pair : map) {
-        if (count == random_idx) {
-            random_person = pair.first;
+        if (count == random_idx1) {
+            random_person1 = pair.first;
             break;
         }
     }
+
+    int random_idx2 = rand() % map.size();
+    int count = 0;
+    std::string random_person2;
+    for (const auto& pair : map) {
+        if (count == random_idx1) {
+            random_person2 = pair.first;
+            break;
+        }
+    }
+
+    
     file.close();
 }
