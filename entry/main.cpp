@@ -45,7 +45,7 @@ int main() {
     }
 
     int random_idx2 = rand() % map.size();
-    int count = 0;
+    count = 0;
     std::string random_person2;
     for (const auto& pair : map) {
         if (count == random_idx1) {

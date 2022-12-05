@@ -2,6 +2,7 @@
 #include <iostream>
 #include "PriorityQueue.h"
 #include<bits/stdc++.h>
+#include <climits>
 
 // std::vector<std::vector<std::string>> Dijkstra::algorithm(std::string vertex1, std::string vertex2) {
 //     std::unordered_map<std::string, std::string> tmp;
@@ -97,4 +98,42 @@ std::vector<std::vector<std::string>> Dijkstra::shortest_path(std::string source
         u = queue.pop(weight);
     }
     return to_return;
+}
+
+std::vector<std::vector<std::string>> Dijkstra::shortest_paths(std::string source, std::string target) {
+    std::vector<std::vector<std::string>> paths = shortest_path(source, target);
+    std::vector<std::pair<std::string,std::string>> visited_edges;
+    if (paths.empty() || paths[0].size() <= 2) return paths;
+    size_t min = paths[0].size();
+    size_t k = 0;
+    while (k < paths.size()) {
+        std::vector<std::string> current_path = paths[k];
+        for (size_t i = 0; i < current_path.size() - 2; i++) {
+            std::string node1 = current_path[i];
+            std::string node2 = current_path[i+1];
+            auto pair1 = std::make_pair(node1, node2);
+            if (std::find(visited_edges.begin(), visited_edges.end(), pair1) != visited_edges.end()) continue;
+            auto pair2 = std::make_pair(node2, node1);
+            visited_edges.push_back(pair1);
+            visited_edges.push_back(pair2);
+            std::vector<std::string>& s_neighbors = map_.at(node1);
+            std::vector<std::string>& t_neighbors = map_.at(node2);
+            s_neighbors.erase(std::find(s_neighbors.begin(), s_neighbors.end(), node2));
+            t_neighbors.erase(std::find(t_neighbors.begin(), t_neighbors.end(), node1));
+            std::vector<std::vector<std::string>> test_path = shortest_path(source, target);
+            s_neighbors.push_back(node2);
+            t_neighbors.push_back(node1);
+            if (!test_path.empty() 
+                && (std::find(test_path[0].begin(), test_path[0].end(), source) == test_path[0].end() 
+                || std::find(test_path[0].begin(), test_path[0].end(), target) == test_path[0].end())) {
+                continue;
+            }
+            if (!test_path.empty() && test_path[0].size() == min
+                && std::find(paths.begin(), paths.end(), test_path[0]) == paths.end()) {
+                paths.push_back(test_path[0]);
+            }
+        }
+        k++;
+    }
+    return paths;
 }
