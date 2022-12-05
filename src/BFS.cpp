@@ -11,7 +11,7 @@
 using namespace std;
 
 //constructor
-BFS::BFS(const std::map<std::string, std::vector<std::string>> & graph_map, const std::string & start_point, size_t node_count) {
+BFS::BFS(const std::unordered_map<std::string, std::vector<std::string>> & graph_map, const std::string & start_point, size_t node_count) {
     size = node_count;
     graph = graph_map;
     start = start_point;

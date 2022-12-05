@@ -17,7 +17,7 @@
  * @param tolerance If the current point is too different (difference larger than tolerance) with the start point,
  * it will not be included in this DFS
  */
-DFS::DFS(const std::map<std::string, std::vector<std::string>>& graph, const std::string& start, int num_nodes) : graph_(graph), start_(start), num_nodes_(num_nodes) { 
+DFS::DFS(const std::unordered_map<std::string, std::vector<std::string>>& graph, const std::string& start, int num_nodes) : graph_(graph), start_(start), num_nodes_(num_nodes) { 
     nodes_visited_.resize(num_nodes_);
     nodes_to_visit_.push(start);
 }
@@ -44,6 +44,7 @@ void DFS::add(const std::string& node) {
     bool not_visited = std::find(nodes_visited_.begin(), nodes_visited_.end(), node) == nodes_visited_.end();
     if (not_visited) {
         nodes_to_visit_.push(node);
+        nodes_visited_.push_back(node);
     }   
 }
 
