@@ -1,4 +1,5 @@
 #include "PriorityQueue.h"
+#include <iostream>
 
 PriorityQueue::PriorityQueue() {
     vector.push_back("");
@@ -24,6 +25,8 @@ void PriorityQueue::heapifyup(unsigned int tmp, std::unordered_map<std::string, 
 
 void PriorityQueue::heapifydown(unsigned int tmp, std::unordered_map<std::string, int> tmp2) {
     if (tmp * 2 < vector.size()) {
+        //std::cout<<vector.at(tmp)<<std::endl;
+        //std::cout<<tmp2[vector.at(tmp)]<<std::endl;
         int num = tmp * 2;
         if (tmp * 2 + 1 < vector.size()) {
             if (tmp2[vector.at(tmp * 2 + 1)] < tmp2[vector.at(tmp * 2)]) {

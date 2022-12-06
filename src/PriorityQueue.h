@@ -12,6 +12,6 @@ class PriorityQueue {
         std::string pop(std::unordered_map<std::string, int> tmp);
         bool isempty();
         std::string peek();
-    private:
+    //private:
         std::vector<std::string> vector;
 };
