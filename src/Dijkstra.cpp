@@ -56,6 +56,7 @@ std::vector<std::vector<std::string>> Dijkstra::shortest_path(std::string source
         weight[i.first] = 2;
         prev[i.first] = "";
     }
+    std::cout<<source<<target<<std::endl;
     weight[source] = 0;
     PriorityQueue queue;
     queue.buildheap(weight);
@@ -63,13 +64,25 @@ std::vector<std::vector<std::string>> Dijkstra::shortest_path(std::string source
     std::vector<std::vector<std::string>> to_return;
     while (queue.isempty() == false) {
         std::string u = queue.peek(); //tmp4
+        std::cout<<u<<std::endl;
+        std::cout<<to_return.size()<<std::endl;
         visited.push_back(u);
         for (auto v : map_[u]) {
+            std::cout<<v<<std::endl;
+            std::cout<<weight[v]<<std::endl;
             auto it = std::find(visited.begin(), visited.end(), v);
             if (it != visited.end()) continue;
             visited.push_back(v);
             if (weight[v] == 2) {
                 weight[v] = 1;
+                //std::unordered_map<std::string, int> tmp;
+                //queue.buildheap(tmp);
+                for (unsigned int count = 0; count < queue.vector.size(); count++) {
+                    if (queue.vector.at(count) == v) {
+                        queue.heapifyup(count, weight);
+                        break;
+                    }
+                }
                 prev[v] = u;
                 if (v == target) {
                     std::vector<std::string> path; //tmp6
@@ -79,7 +92,9 @@ std::vector<std::vector<std::string>> Dijkstra::shortest_path(std::string source
                         current = prev[current];
                     }
                     path.push_back(current);
-                    if (to_return.empty()) {
+                    to_return.push_back(path);
+                    return to_return;
+                    /*if (to_return.empty()) {
                         to_return.push_back(path);
                         continue;
                     }
@@ -91,7 +106,7 @@ std::vector<std::vector<std::string>> Dijkstra::shortest_path(std::string source
                     if (path.size() == to_return.at(0).size()) {
                         to_return.push_back(path);
                         continue;
-                    }
+                    }*/
                 }
             }
         }
