@@ -70,6 +70,12 @@ std::vector<std::vector<std::string>> Dijkstra::shortest_path(std::string source
             visited.push_back(v);
             if (weight[v] == 2) {
                 weight[v] = 1;
+                for (unsigned int count = 0; count < queue.vector.size(); count++) {
+                    if (queue.vector.at(count) == v) {
+                        queue.heapifyup(count, weight);
+                        break;
+                    }
+                }
                 prev[v] = u;
                 if (v == target) {
                     std::vector<std::string> path; //tmp6
@@ -79,7 +85,9 @@ std::vector<std::vector<std::string>> Dijkstra::shortest_path(std::string source
                         current = prev[current];
                     }
                     path.push_back(current);
-                    if (to_return.empty()) {
+                    to_return.push_back(path);
+                    return to_return;
+                    /*if (to_return.empty()) {
                         to_return.push_back(path);
                         continue;
                     }
@@ -91,7 +99,7 @@ std::vector<std::vector<std::string>> Dijkstra::shortest_path(std::string source
                     if (path.size() == to_return.at(0).size()) {
                         to_return.push_back(path);
                         continue;
-                    }
+                    }*/
                 }
             }
         }
