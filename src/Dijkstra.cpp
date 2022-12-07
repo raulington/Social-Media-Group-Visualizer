@@ -114,6 +114,7 @@ std::vector<std::vector<std::string>> Dijkstra::shortest_paths(std::string sourc
     if (paths.empty() || paths[0].size() <= 2) return paths;
     size_t min = paths[0].size();
     size_t k = 0;
+    
     while (k < paths.size()) {
         std::vector<std::string> current_path = paths[k];
         for (size_t i = 0; i < current_path.size() - 2; i++) {
@@ -139,6 +140,11 @@ std::vector<std::vector<std::string>> Dijkstra::shortest_paths(std::string sourc
             if (!test_path.empty() && test_path[0].size() == min
                 && std::find(paths.begin(), paths.end(), test_path[0]) == paths.end()) {
                 paths.push_back(test_path[0]);
+            }
+            if (!test_path.empty() && test_path[0].size() < min) {
+                paths = test_path;
+                min = test_path[0].size();
+                k = -1;
             }
         }
         k++;
