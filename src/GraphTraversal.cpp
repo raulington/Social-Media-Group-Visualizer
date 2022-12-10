@@ -13,9 +13,9 @@ GraphTraversal::Iterator::Iterator() : graph_traversal(NULL) {
     // Do nothing
 }
 
-GraphTraversal::Iterator::Iterator(GraphTraversal * g) : graph_traversal(g) {
+GraphTraversal::Iterator::Iterator(GraphTraversal * g, std::string start) : graph_traversal(g), start(start) {
     // set the value for start
-    start = g->peek();
+    //start = g->peek();
 }
 
 /**
