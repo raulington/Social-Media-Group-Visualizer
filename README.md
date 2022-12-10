@@ -3,6 +3,8 @@ In a given social network, who is the most influential person on the network, or
 
 The team will use the dataset, assign a weight of 1 to each edge, and first use the Betweenness Centrality algorithm to determine the most popular person. Then, we will utilize Dijkstra’s Algorithm to find the number of connections that are between a random user of the network and the most influential user.
 
+We used a Facebook Social Circles dataset from the Stanford SNAP group for our project. A link to this dataset can be found [here](https://snap.stanford.edu/data/ego-Facebook.html).
+
 # Location of all major files
 Test files are under test and can be run with
 ```./test```
