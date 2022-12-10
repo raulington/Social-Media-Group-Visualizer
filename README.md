@@ -13,7 +13,11 @@ The main.cpp file is in the entry directory
 
 # Running project
 To run the project, run the following command lines:
+
 mkdir build
+
 cd build
+
 cmake ..
+
 ./main
