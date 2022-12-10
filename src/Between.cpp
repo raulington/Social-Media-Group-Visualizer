@@ -2,53 +2,79 @@
 #include "Dijkstra.h"
 #include <algorithm>
 #include <iostream>
+#include <queue>
+#include <stack>
 
 Between::Between(std::unordered_map<std::string, std::vector<std::string>>& graph) {
     graph_ = graph;
-    // Storing all vertices from the map
-    std::vector<std::string> vertices;
-    for (const auto& keyvalue : graph) {
-        vertices.push_back(keyvalue.first);
-    }
-
-    // Getting all possible pairs of vertices
-    for (size_t i = 0; i < vertices.size() - 1; ++i)
-        for (size_t j = i + 1; j < vertices.size(); j++)
-            vertex_pairs_.push_back(std::make_pair(vertices[i], vertices[j]));
-
-    // Getting all possible shortest paths
-    Dijkstra d(graph);
-    for (const auto& vertex_pair : vertex_pairs_) {
-        std::vector<std::vector<std::string>> paths = d.shortest_paths(vertex_pair.first, vertex_pair.second);
-        vertex_paths_.insert(std::make_pair(vertex_pair, paths));
-    }
 }
 
+// Pseudocode from https://sites.cs.ucsb.edu/~gilbert/cs240a/Old/cs240aSpr2011/slides/RobinsonBCslides.pdf
+std::unordered_map<std::string, double> Between::centralities()
+{
+    // Initialize the betweenness centrality of all nodes to 0
+    std::unordered_map<std::string, double> bc;
+    for (const auto& pair : graph_) {
+        auto node = pair.first;
+        bc[node] = 0.0;
+    }
 
-double Between::centrality(std::string s) {
-    double centrality = 0;
-    // Calculating centrality
-    for (const auto& vertex_pair : vertex_pairs_) {
-        if (vertex_pair.first == s || vertex_pair.second == s) continue;
-        std::vector<std::vector<std::string>> paths = vertex_paths_.at(vertex_pair);
-        double size = paths.size();
-        double count = 0;
-        if (size > 0) {
-            for (const auto& path : paths)
-                if (std::find(path.begin(), path.end(), s) != path.end())
-                    count += 1;
-            count = count / size;
+    // Iterate over all nodes in the graph
+    for (const auto& pair : graph_) {
+        auto source = pair.first;
+        // Queue for storing the nodes visited during the breadth-first search
+        std::queue<std::string> Q; Q.push(source);
+        std::stack<std::string> S;
+
+        std::unordered_map<std::string, double> sig;
+        std::unordered_map<std::string, int> d;
+        for (const auto& pair2 : graph_) {
+            std::string node = pair2.first;
+            d[node] = -1;
+            sig[node] = 0;
         }
-        centrality += count;
-    }
-    
-    return centrality;
-}
+        sig[source] = 1;
+        d[source] = 0;
 
-std::unordered_map<std::string, double> Between::centralities() {
-    std::unordered_map<std::string, double> all_centralities;
-    for (const auto& keyvalue : graph_) {
-        all_centralities.insert(std::make_pair(keyvalue.first, centrality(keyvalue.first)));
+        // Maps from a node to its predecessor nodes on the shortest path from the source node
+        std::unordered_map<std::string, std::vector<std::string>> P;
+        for (const auto& pair3 : graph_) {
+            std::string node = pair3.first;
+            P[node] = {};
+        }
+
+        // Perform breadth-first search
+        while (!Q.empty()) {
+            std::string v = Q.front(); Q.pop();
+            S.push(v);
+            for (std::string w : graph_.at(v)) {
+                if (d[w] < 0) {
+                    Q.push(w);
+                    d[w] = d[v] + 1;
+                }
+                if (d[w] == d[v] + 1) {
+                    sig[w] = sig[w] + sig[v];
+                    P[w].push_back(v);
+                }
+            }
+        }
+        std::unordered_map<std::string, double> z;
+        for (const auto& pair4 : graph_) {
+            auto node = pair4.first;
+            z[node] = 0.0;
+        }
+        
+        while (!S.empty()) {
+            std::string w = S.top(); S.pop();
+            for (auto& v : P[w]) {
+                z[v] = z[v] + (sig[v] / sig[w]) * (1 + z[w]);
+            }
+            if (w != source) bc[w] = bc[w] + z[w];
+        }
     }
-    return all_centralities;
-}
+
+    for (auto& pair : bc) {
+        pair.second = pair.second/2;
+    }
+    return bc;
+}                 
