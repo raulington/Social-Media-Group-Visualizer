@@ -26,7 +26,7 @@ public:
   class Iterator : std::iterator<std::forward_iterator_tag, std::string> {
   public:
     Iterator();
-    Iterator(GraphTraversal* g);
+    Iterator(GraphTraversal* g, std::string start);
 
     Iterator & operator++();
     std::string operator*();

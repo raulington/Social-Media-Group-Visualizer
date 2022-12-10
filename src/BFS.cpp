@@ -19,6 +19,10 @@ BFS::BFS(const std::unordered_map<std::string, std::vector<std::string>> & graph
     //push point to the queue
     queue.push(start);
 
+    for (auto i : graph[start]) {
+            queue.push(i);
+    }
+
     //add the start to the list of visited points
     visited_vect.resize(size);
     visited_vect.push_back(start);
@@ -28,7 +32,7 @@ BFS::BFS(const std::unordered_map<std::string, std::vector<std::string>> & graph
  * Returns an iterator for the traversal starting at the first point.
  */
 GraphTraversal::Iterator BFS::begin() {
-    return GraphTraversal::Iterator();
+    return GraphTraversal::Iterator(this, start);
 }
 
 /**
@@ -55,6 +59,9 @@ void BFS::add(const std::string & point) {
     if (check == true) {
         //add the value
         queue.push(point);
+        for (auto i : graph[point]) {
+            queue.push(i);
+        }
         // add point to the visited vector
         visited_vect.push_back(point);
     }

@@ -5,23 +5,35 @@
 #include <unordered_map>
 #include "Between.h"
 #include "GraphTraversal.h"
+#include "BFS.h"
+#include "DFS.h"
 
 int main() {
     std::string tmp2;
     std::string tmp3;
     std::string tmp4;
     std::unordered_map<std::string, std::vector<std::string>> map;
-    std::ifstream file("facebook_combined.txt");
+    std::ifstream file("../facebook_combined.txt");
+
+    int counter = 0;
     while (getline(file, tmp2)) {
+        
+        if (counter == 20000) {
+            break;
+        }
         tmp3 = tmp2.substr(0, tmp2.find(" "));
-        tmp4 = tmp2.substr(tmp2.find(" "), tmp2.size());
+        tmp4 = tmp2.substr(tmp2.find(" ")+1, tmp2.size());
         map[tmp3].push_back(tmp4);
         map[tmp4].push_back(tmp3);
+        counter++;
+
     }
+
+    std::cout << "DONE" << std::endl;
 
     // Grab most Influential person
     Between b(map);
-    std::unordered_map<std::string, double> centralities;
+    std::unordered_map<std::string, double> centralities = b.centralities();
     int maxcentrality = 0;
     std::string most_influential;
     for (const auto& pair : centralities) {
@@ -38,22 +50,34 @@ int main() {
     int count = 0;
     std::string random_person1;
     for (const auto& pair : map) {
+        count++;
         if (count == random_idx1) {
             random_person1 = pair.first;
             break;
         }
     }
 
-    int random_idx2 = rand() % map.size();
-    count = 0;
-    std::string random_person2;
-    for (const auto& pair : map) {
-        if (count == random_idx1) {
-            random_person2 = pair.first;
-            break;
-        }
+    std::cout << "Random Person is " << random_person1 << std::endl;
+    // performing BFS from most_influential to random_person1
+    BFS bfs(map, random_person1, centralities.size());
+
+    if (bfs.empty() == true) {
+        std::cout << "EMPTY" << std::endl;
     }
 
+    //printing out the path between the 2
+    GraphTraversal::Iterator it;
+    it = bfs.begin();
+
+    while (it != bfs.end()) {
+
+        if (*it == most_influential) {
+            std::cout << *it << std::endl;
+            break;
+        }
+        std::cout << *it << std::endl;
+        ++it;
+    }
     
     file.close();
 }
