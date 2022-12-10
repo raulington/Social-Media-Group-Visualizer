@@ -5,7 +5,7 @@ The team will use the dataset, assign a weight of 1 to each edge, and first use 
 
 # Location of all major files
 Test files are under test and can be run with
-./test
+```./test```
 
 All major files are under the src directory
 
