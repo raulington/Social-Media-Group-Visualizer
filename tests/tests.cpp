@@ -1,5 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 #include "./Between.h"
+#include "./Dijkstra.h"
 #include "./BFS.h"
 #include "./DFS.h"
 
@@ -71,7 +72,12 @@ TEST_CASE("BFS maintains the BFS ordering", "[weight=0][part=1][part=1b][valgrin
 
 // Cases for betweenness based on the following youtube video: https://www.youtube.com/watch?v=ptqt2zr9ZRE
 TEST_CASE("Betweeness case 1", "[weight=1][part=1][valgrind]") {
-    std::unordered_map<std::string, std::vector<std::string>> map;
+    std::unordered_map<std::string, std::vector<std::string>> map = {{"A", {"B", "C"}},
+                                                                      {"B", {"A", "C"}},
+                                                                      {"C", {"A", "B", "D"}},
+                                                                      {"D", {"C", "E", "F"}},
+                                                                      {"E", {"D", "F"}},
+                                                                      {"F", {"D", "E"}}};
     std::string A = "A";
     std::string B = "B";
     std::string C = "C";
@@ -79,48 +85,9 @@ TEST_CASE("Betweeness case 1", "[weight=1][part=1][valgrind]") {
     std::string E = "E";
     std::string F = "F";
 
-    std::vector<std::string> Aneighbors;
-    Aneighbors.insert(Aneighbors.end(), { B, C });
-    map.insert(std::make_pair(A, Aneighbors));
-
-    std::vector<std::string> Bneighbors;
-    Bneighbors.insert(Bneighbors.end(), { A, C });
-    map.insert(std::make_pair(B, Bneighbors));
-
-    std::vector<std::string> Cneighbors;
-    Cneighbors.insert(Cneighbors.end(), { A, B, D });
-    map.insert(std::make_pair(C, Cneighbors));
-
-    std::vector<std::string> Eneighbors;
-    Eneighbors.insert(Eneighbors.end(), { D, F });
-    map.insert(std::make_pair(E, Eneighbors));
-
-    std::vector<std::string> Fneighbors;
-    Fneighbors.insert(Fneighbors.end(), { D, E });
-    map.insert(std::make_pair(F, Fneighbors));
-
-    std::vector<std::string> Dneighbors;
-    Dneighbors.insert(Dneighbors.end(), { C, E, F });
-    map.insert(std::make_pair(D, Dneighbors));
-
 
     Between b(map);
     std::unordered_map<std::string, double> cmap = b.centralities();
-    // for (const auto& keypair : cmap) {
-    //     std::cout << "string: " << keypair.first;
-    //     std::cout << " centrality: " << keypair.second << std::endl;
-    // }
-
-    // for (const auto& path : b.vertex_paths_) {
-    //     std::cout << "Pair: " << path.first.first << " " << path.first.second << std::endl;
-    //     int count = 0;
-    //     for (std::vector<std::string> walk : path.second) {
-    //         std::cout << "Path " << count << ":" << std::endl;
-    //         for (std::string step : walk) std::cout << step << " ";
-    //         std::cout << std::endl;
-    //         count += 1;
-    //     }
-    // }
 
     REQUIRE(cmap.at(A) == 0);
     REQUIRE(cmap.at(B) == 0);
@@ -131,7 +98,12 @@ TEST_CASE("Betweeness case 1", "[weight=1][part=1][valgrind]") {
 }
 
 TEST_CASE("Betweeness case 2", "[weight=1][part=1][valgrind]") {
-    std::unordered_map<std::string, std::vector<std::string>> map;
+    std::unordered_map<std::string, std::vector<std::string>> map = {{"A", {"E", "B"}},
+                                                                      {"B", {"A", "C", "D"}},
+                                                                      {"C", {"B", "D", "F"}},
+                                                                      {"D", {"C", "B"}},
+                                                                      {"E", {"F", "A"}},
+                                                                      {"F", {"C", "E"}}};
     std::string A = "A";
     std::string B = "B";
     std::string C = "C";
@@ -139,48 +111,8 @@ TEST_CASE("Betweeness case 2", "[weight=1][part=1][valgrind]") {
     std::string E = "E";
     std::string F = "F";
 
-    std::vector<std::string> Aneighbors;
-    Aneighbors.insert(Aneighbors.end(), { E, B });
-    map.insert(std::make_pair(A, Aneighbors));
-
-    std::vector<std::string> Bneighbors;
-    Bneighbors.insert(Bneighbors.end(), { A, C, D });
-    map.insert(std::make_pair(B, Bneighbors));
-
-    std::vector<std::string> Cneighbors;
-    Cneighbors.insert(Cneighbors.end(), { B, D, F });
-    map.insert(std::make_pair(C, Cneighbors));
-
-    std::vector<std::string> Eneighbors;
-    Eneighbors.insert(Eneighbors.end(), { F, A });
-    map.insert(std::make_pair(E, Eneighbors));
-
-    std::vector<std::string> Fneighbors;
-    Fneighbors.insert(Fneighbors.end(), { C, E });
-    map.insert(std::make_pair(F, Fneighbors));
-
-    std::vector<std::string> Dneighbors;
-    Dneighbors.insert(Dneighbors.end(), { C, B });
-    map.insert(std::make_pair(D, Dneighbors));
-
     Between b(map);
     std::unordered_map<std::string, double> cmap = b.centralities();
-
-    // for (const auto& keypair : cmap) {
-    //     std::cout << "string: " << keypair.first;
-    //     std::cout << " centrality: " << keypair.second << std::endl;
-    // }
-
-    // for (const auto& path : b.vertex_paths_) {
-    //     std::cout << "Pair: " << path.first.first << " " << path.first.second << std::endl;
-    //     int count = 0;
-    //     for (std::vector<std::string> walk : path.second) {
-    //         std::cout << "Path " << count << ":" << std::endl;
-    //         for (std::string step : walk) std::cout << step << " ";
-    //         std::cout << std::endl;
-    //         count += 1;
-    //     }
-    // }
 
     REQUIRE(cmap.at(A) == 1.5);
     REQUIRE(cmap.at(B) == 2.5);
@@ -189,3 +121,26 @@ TEST_CASE("Betweeness case 2", "[weight=1][part=1][valgrind]") {
     REQUIRE(cmap.at(E) == 1);
     REQUIRE(cmap.at(F) == 1.5);
 }
+
+
+TEST_CASE("Dijkstra case", "[weight=1][part=1][valgrind]") {
+    std::unordered_map<std::string, std::vector<std::string>> map = {{"A", {"E", "B"}},
+                                                                      {"B", {"A", "C", "D"}},
+                                                                      {"C", {"B", "D", "F"}},
+                                                                      {"D", {"C", "B"}},
+                                                                      {"E", {"F", "A"}},
+                                                                      {"F", {"C", "E"}}};
+
+    Dijkstra d(map);
+    std::vector<std::vector<std::string>> EDpaths = d.shortest_paths("E", "D");
+    std::vector<std::vector<std::string>> EDTrue = {{"D", "B", "A", "E"}, {"D", "C", "F", "E"}};
+    std::vector<std::vector<std::string>> BEpaths = d.shortest_paths("B", "E");
+    std::vector<std::vector<std::string>> BETrue = {{"E", "A", "B"}};
+    std::vector<std::vector<std::string>> CApaths = d.shortest_paths("C", "A");
+    std::vector<std::vector<std::string>> CATrue = {{"A", "B", "C"}};
+
+    REQUIRE(CApaths == CATrue);
+    REQUIRE(BEpaths == BETrue);
+    REQUIRE(EDpaths == EDTrue);
+}
+
