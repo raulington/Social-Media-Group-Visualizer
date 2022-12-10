@@ -14,10 +14,10 @@ The main.cpp file is in the entry directory
 # Running project
 To run the project, run the following command lines:
 
-mkdir build
+``mkdir build``
 
-cd build
+``cd build``
 
-cmake ..
+```cmake ..```
 
-./main
+```./main```
