@@ -1,5 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 #include "./Between.h"
+#include "./Dijkstra.h"
 #include "./BFS.h"
 #include "./DFS.h"
 
@@ -87,21 +88,6 @@ TEST_CASE("Betweeness case 1", "[weight=1][part=1][valgrind]") {
 
     Between b(map);
     std::unordered_map<std::string, double> cmap = b.centralities();
-    for (const auto& keypair : cmap) {
-        std::cout << "string: " << keypair.first;
-        std::cout << " centrality: " << keypair.second << std::endl;
-    }
-
-    // for (const auto& path : b.vertex_paths_) {
-    //     std::cout << "Pair: " << path.first.first << " " << path.first.second << std::endl;
-    //     int count = 0;
-    //     for (std::vector<std::string> walk : path.second) {
-    //         std::cout << "Path " << count << ":" << std::endl;
-    //         for (std::string step : walk) std::cout << step << " ";
-    //         std::cout << std::endl;
-    //         count += 1;
-    //     }
-    // }
 
     REQUIRE(cmap.at(A) == 0);
     REQUIRE(cmap.at(B) == 0);
@@ -128,22 +114,6 @@ TEST_CASE("Betweeness case 2", "[weight=1][part=1][valgrind]") {
     Between b(map);
     std::unordered_map<std::string, double> cmap = b.centralities();
 
-    for (const auto& keypair : cmap) {
-        std::cout << "string: " << keypair.first;
-        std::cout << " centrality: " << keypair.second << std::endl;
-    }
-
-    // for (const auto& path : b.vertex_paths_) {
-    //     std::cout << "Pair: " << path.first.first << " " << path.first.second << std::endl;
-    //     int count = 0;
-    //     for (std::vector<std::string> walk : path.second) {
-    //         std::cout << "Path " << count << ":" << std::endl;
-    //         for (std::string step : walk) std::cout << step << " ";
-    //         std::cout << std::endl;
-    //         count += 1;
-    //     }
-    // }
-
     REQUIRE(cmap.at(A) == 1.5);
     REQUIRE(cmap.at(B) == 2.5);
     REQUIRE(cmap.at(C) == 2.5);
@@ -151,3 +121,26 @@ TEST_CASE("Betweeness case 2", "[weight=1][part=1][valgrind]") {
     REQUIRE(cmap.at(E) == 1);
     REQUIRE(cmap.at(F) == 1.5);
 }
+
+
+TEST_CASE("Dijkstra case", "[weight=1][part=1][valgrind]") {
+    std::unordered_map<std::string, std::vector<std::string>> map = {{"A", {"E", "B"}},
+                                                                      {"B", {"A", "C", "D"}},
+                                                                      {"C", {"B", "D", "F"}},
+                                                                      {"D", {"C", "B"}},
+                                                                      {"E", {"F", "A"}},
+                                                                      {"F", {"C", "E"}}};
+
+    Dijkstra d(map);
+    std::vector<std::vector<std::string>> EDpaths = d.shortest_paths("E", "D");
+    std::vector<std::vector<std::string>> EDTrue = {{"D", "B", "A", "E"}, {"D", "C", "F", "E"}};
+    std::vector<std::vector<std::string>> BEpaths = d.shortest_paths("B", "E");
+    std::vector<std::vector<std::string>> BETrue = {{"E", "A", "B"}};
+    std::vector<std::vector<std::string>> CApaths = d.shortest_paths("C", "A");
+    std::vector<std::vector<std::string>> CATrue = {{"A", "B", "C"}};
+
+    REQUIRE(CApaths == CATrue);
+    REQUIRE(BEpaths == BETrue);
+    REQUIRE(EDpaths == EDTrue);
+}
+

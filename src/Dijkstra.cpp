@@ -86,20 +86,8 @@ std::vector<std::vector<std::string>> Dijkstra::shortest_path(std::string source
                     }
                     path.push_back(current);
                     to_return.push_back(path);
+                    to_return[0].pop_back();
                     return to_return;
-                    /*if (to_return.empty()) {
-                        to_return.push_back(path);
-                        continue;
-                    }
-                    if (path.size() < to_return.at(0).size()) {
-                        to_return.clear();
-                        to_return.push_back(path);
-                        continue;
-                    }
-                    if (path.size() == to_return.at(0).size()) {
-                        to_return.push_back(path);
-                        continue;
-                    }*/
                 }
             }
         }
@@ -108,6 +96,9 @@ std::vector<std::vector<std::string>> Dijkstra::shortest_path(std::string source
     return to_return;
 }
 
+
+// ONLY FOR TESTING PURPOSES
+// Checks to see if the algorithm can get all shortest paths of the same size in a graph.
 std::vector<std::vector<std::string>> Dijkstra::shortest_paths(std::string source, std::string target) {
     std::vector<std::vector<std::string>> paths = shortest_path(source, target);
     std::vector<std::pair<std::string,std::string>> visited_edges;
