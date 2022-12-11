@@ -25,3 +25,12 @@ As described in our project proposal, our leading question was primarily focused
 In order to answer this question, we used betweenness centrality to find the most influential person, BFS/DFS to identify a random person that is connected to the most influential person, and Dijkstra’s algorithm to find the shortest path between these two people.
 <br>
 Overall, by doing this project, we learned more about the betweenness centrality algorithm because it was not an algorithm that we had learned during class. When we ran our implementation with approximately 25% of the entire dataset or about 20,000 vertices, we found that the most influential person was the individual at index 107. This individual has a direct edge to the person at index 1014, which we found by running BFS from index 107.
+
+# Results of Running the Algorithms
+As shown by the image below, our algorithms pass all of the 7 tests cases that we have written. To view our code for the test cases, please refer to tests.cpp in the tests folder. In addition, we have also included a picture of our output after running our implementation with 20,000 vertices, as briefly described above.
+<br>
+<br>
+![image](https://user-images.githubusercontent.com/30820292/206884101-842c7fc0-49dc-43e4-94c2-127f312dfd53.png)
+<br>
+<br>
+![image](https://user-images.githubusercontent.com/30820292/206884395-fc934bf2-bd70-4dcd-ad3e-fbdd52ed3013.png)
