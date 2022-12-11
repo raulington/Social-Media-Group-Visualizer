@@ -19,7 +19,7 @@ int main() {
     int counter = 0;
     while (getline(file, tmp2)) {
         
-        if (counter == 20000) {
+        if (counter == 1000) {
             break;
         }
         tmp3 = tmp2.substr(0, tmp2.find(" "));
@@ -56,7 +56,7 @@ int main() {
         }
     }
 
-    std::cout << "Random Person is " << random_person1 << std::endl;
+    std::cout << "Random Person: " << random_person1 << std::endl;
     // performing BFS from most_influential to random_person1
     BFS bfs(map, random_person1, centralities.size());
 
@@ -67,7 +67,6 @@ int main() {
     //printing out the path between the 2
     GraphTraversal::Iterator it;
     it = bfs.begin();
-
     while (it != bfs.end()) {
 
         if (*it == most_influential) {
@@ -81,15 +80,11 @@ int main() {
     Dijkstra d(map);
     std::vector<std::string> d_path = d.shortest_path(most_influential, random_person1)[0];
 
-    int styling = 0;
     std::cout << "Path from most influential to random person using Dijkstra:" << std::endl;
     for (std::string step : d_path) {
-        if (styling % 10 == 0) std::cout << std::endl;
-        std::cout << step << " ";
-        styling++;
+        std::cout << step << std::endl;
     }
     
-
 
     file.close();
 }
