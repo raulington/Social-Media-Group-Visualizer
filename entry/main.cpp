@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include "Dijkstra.h"
 #include "Between.h"
 #include "GraphTraversal.h"
 #include "BFS.h"
@@ -28,8 +29,6 @@ int main() {
         counter++;
 
     }
-
-    std::cout << "DONE" << std::endl;
 
     // Grab most Influential person
     Between b(map);
@@ -78,6 +77,19 @@ int main() {
         std::cout << *it << std::endl;
         ++it;
     }
+
+    Dijkstra d(map);
+    std::vector<std::string> d_path = d.shortest_path(most_influential, random_person1)[0];
+
+    int styling = 0;
+    std::cout << "Path from most influential to random person using Dijkstra:" << std::endl;
+    for (std::string step : d_path) {
+        if (styling % 10 == 0) std::cout << std::endl;
+        std::cout << step << " ";
+        styling++;
+    }
     
+
+
     file.close();
 }
