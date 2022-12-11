@@ -14,7 +14,7 @@ In order to test this algorithm, we checked that our implementation (1) maintain
 ## Dijkstra's Algorithm
 Dijkstra’s algorithm is used to return the shortest path between two given vertices of a graph. The algorithm makes use of a priority queue. In our project, this algorithm was applied to an unweighted graph, so we just assumed that every edge in the graph has a weight of 1. As a result, we did not encounter any negative weight cycles, so this algorithm was the most optimal solution. The runtime of this algorithm is **O(mlog(n))**.
 <br>
-To test our implementation, we wrote test cases for the betweenness centrality algorithm and indirectly test this algorithm. This is because Dijkstra’s algorithm is an essential part of our implementation of betweenness centrality.
+To test our implementation, we checked that our algorithm returns the shortest path for a graph that we constructed manually.
 
 ## Betweenness Centrality
 In our project, a betweenness centrality algorithm was used to find the most influential person in the social network. The way this algorithm works is that it finds the number of times this node occurs in the shortest path. If the node occurs in the shortest path between two nodes, 1 is added to its centrality. If there are multiple shortest paths between two nodes, the algorithm adds the number of times that occurs between those paths divided by the number of shortest paths. The runtime of our betweenness centrality algorithm is **O(mn+n^2)**.
